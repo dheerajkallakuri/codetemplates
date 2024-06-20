@@ -73,7 +73,7 @@ def BinaryChallenge(strArr):
     root = construct_bst(preorder)
     return find_lca(root, n1, n2)
 
-def BinaryChallenge(strArr):
+def BinaryChallenge_inorder(strArr):
     inorder = list(map(int, strArr[0][1:-1].split(', ')))
     preorder = list(map(int, strArr[1][1:-1].split(', ')))
     n1 = int(strArr[2])
