@@ -43,6 +43,50 @@ class LinkedList:
             print(current.data, end=' -> ')
             current = current.next
         print('None')
+    
+    def merge_sort(self, head):
+        if head is None or head.next is None:
+            return head
+        
+        middle = self.get_middle(head)
+        next_to_middle = middle.next
+        middle.next = None
+
+        left = self.merge_sort(head)
+        right = self.merge_sort(next_to_middle)
+
+        sorted_list = self.sorted_merge(left, right)
+        return sorted_list
+
+    def get_middle(self, head):
+        if head is None:
+            return head
+
+        slow = head
+        fast = head
+
+        while fast.next is not None and fast.next.next is not None:
+            slow = slow.next
+            fast = fast.next.next
+
+        return slow
+
+    def sorted_merge(self, left, right):
+        if left is None:
+            return right
+        if right is None:
+            return left
+
+        if left.data <= right.data:
+            result = left
+            result.next = self.sorted_merge(left.next, right)
+        else:
+            result = right
+            result.next = self.sorted_merge(left, right.next)
+        return result
+
+    def sort(self):
+        self.head = self.merge_sort(self.head)
 
 # Example usage:
 if __name__ == '__main__':
@@ -52,4 +96,6 @@ if __name__ == '__main__':
     ll.append(3)
     ll.prepend(0)
     ll.delete_value(2)
+    ll.display()
+    ll.sort()
     ll.display()
