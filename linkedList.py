@@ -44,6 +44,7 @@ class LinkedList:
             current = current.next
         print('None')
     
+    #O(n log n)
     def merge_sort(self, head):
         if head is None or head.next is None:
             return head
@@ -91,9 +92,9 @@ class LinkedList:
 # Example usage:
 if __name__ == '__main__':
     ll = LinkedList()
-    ll.append(1)
-    ll.append(2)
     ll.append(3)
+    ll.append(2)
+    ll.append(1)
     ll.prepend(0)
     ll.delete_value(2)
     ll.display()
